@@ -1,0 +1,63 @@
+
+on: [push]https://github.com/josro/Como-seguir-el.git
+wordpressUsername: <changeme>
+wordpressPassword: <changeme>
+wordpressEmail: change@me.com
+wordpressFirstName: My
+wordpressLastName: User
+wordpressBlogName: My Blog
+wordpressScheme: http
+wordpressSkipInstall: true
+allowOverrideNone: true
+#customHTAccessCM: wordpress-htaccess
+updateStrategy:
+  type: Recreate
+replicaCount: 1
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |mariadb:
+  enabled: false
+
+externalDatabase:
+  host: changeme
+  user: changeme
+  password: changeme
+  database: wordpress
+  port: 3306
+
+service:
+  type: ClusterIP
+  port: 80
+  httpsPort: 443
+  httpsTargetPort: https
+  metricsPort: 9117
+  annotations: {}
+## Allow health checks to be pointed at the https port
+healthcheckHttps: false
+
+storageClassName: ""
+  volumeName: pv-wordpress
+  accessModes:
+    - ReadWriteOnce
+  resources:storageClassName: ""
+  volumeName: pv-wordpress
+  accessModes:
+    - ReadWriteOnce
+  resources:storageClassName: ""
+  volumeName: pv-wordpress
+  accessModes:
+    - ReadWriteOnce
+  resources:
+## Configure extra options for liveness and readiness probes
+## ref: https://kubernetes.io/docs/tasks/configure-pod-
+        echo Add other actions to build,
+        echo test, and deploy your project.
